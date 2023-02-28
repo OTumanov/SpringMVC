@@ -8,16 +8,16 @@ import java.util.List;
 
 @Component
 public class PersonDAO {
-
     private static int PEOPLE_COUNT;
-    private final List<Person> people;
+    private List<Person> people;
 
     {
         people = new ArrayList<>();
+
         people.add(new Person(++PEOPLE_COUNT, "Oleg"));
-        people.add(new Person(++PEOPLE_COUNT, "Alex"));
         people.add(new Person(++PEOPLE_COUNT, "Dimon"));
         people.add(new Person(++PEOPLE_COUNT, "Yulya"));
+        people.add(new Person(++PEOPLE_COUNT, "Alex"));
     }
 
     public List<Person> index() {
@@ -25,11 +25,7 @@ public class PersonDAO {
     }
 
     public Person show(int id) {
-        return people
-                .stream()
-                .filter(person -> person.getId() == id)
-                .findAny()
-                .orElse(null);
+        return people.stream().filter(person -> person.getId() == id).findAny().orElse(null);
     }
 
     public void save(Person person) {
@@ -37,8 +33,13 @@ public class PersonDAO {
         people.add(person);
     }
 
-    public void update(int id, Person updatePerson) {
+    public void update(int id, Person updatedPerson) {
         Person personToBeUpdated = show(id);
-        personToBeUpdated.setName(updatePerson.getName());
+
+        personToBeUpdated.setName(updatedPerson.getName());
+    }
+
+    public void delete(int id) {
+        people.removeIf(p -> p.getId() == id);
     }
 }
