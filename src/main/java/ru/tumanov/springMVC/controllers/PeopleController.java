@@ -1,6 +1,7 @@
 package ru.tumanov.springMVC.controllers;
 
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +40,7 @@ public class PeopleController {
     @PostMapping()
     public String create(@ModelAttribute("person") @Valid Person person,
                          BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "people/new";
         }
         personDAO.save(person);
@@ -56,7 +57,7 @@ public class PeopleController {
     public String update(@ModelAttribute("person") @Valid Person person,
                          @PathVariable("id") int id,
                          BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "people/edit";
         }
         personDAO.update(id, person);
