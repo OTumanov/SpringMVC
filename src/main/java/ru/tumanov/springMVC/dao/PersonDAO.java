@@ -44,7 +44,6 @@ public class PersonDAO {
                 updatedPerson.getAge(),
                 updatedPerson.getEmail(),
                 id);
-
     }
 
     public void delete(int id) {
