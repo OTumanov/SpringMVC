@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.tumanov.springMVC.dao.PersonDAO;
 import ru.tumanov.springMVC.models.Person;
 
+import java.sql.SQLException;
+
 @Controller
 @RequestMapping("/people")
 public class PeopleController {
@@ -21,7 +23,7 @@ public class PeopleController {
     }
 
     @GetMapping()
-    public String index(Model model) {
+    public String index(Model model) throws SQLException {
         model.addAttribute("people", personDAO.index());
         return "people/index";
     }

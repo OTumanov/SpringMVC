@@ -26,6 +26,10 @@ public class Person {
         this.email = email;
     }
 
+    public Person() {
+
+    }
+
     public int getId() {
         return id;
     }
