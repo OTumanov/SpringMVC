@@ -100,10 +100,10 @@ public class PersonDAO {
     public void delete(int id) {
         try {
             PreparedStatement preparedStatement =
-                    connection.prepareStatement("DELETE Person WHERE id=?");
+                    connection.prepareStatement("DELETE FROM Person WHERE id=?");
 
             preparedStatement.setInt(1, id);
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
